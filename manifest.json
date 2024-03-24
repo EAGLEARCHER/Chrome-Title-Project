@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Tab-Title Viewer",
+  "version": "1.0",
+  "description": "Automatically picks up the title of the current tab and displays it in the popup.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
