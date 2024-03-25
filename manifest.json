@@ -5,7 +5,8 @@
   "description": "Automatically picks up the title of the current tab and displays it in the popup.",
   "permissions": ["activeTab", "scripting"],
   "action": {
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": "images/icon.png"
   },
   "background": {
     "service_worker": "background.js"
@@ -13,9 +14,11 @@
 
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
       "js": ["scripts/content.js"],
-      "run_at": "document_idle"
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*"
+      ]
     }
   ]
 }

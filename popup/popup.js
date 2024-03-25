@@ -15,7 +15,7 @@ function renderTitles(titles) {
   });
 
   const showTitleDiv = document.querySelector(".showTitle");
-  showTitleDiv.innerHTML = ""; // Clear the previous content
+  showTitleDiv.innerHTML = "";
   showTitleDiv.appendChild(titleList);
 }
 
@@ -36,11 +36,8 @@ pickbtn.addEventListener("click", async () => {
   // Save updated tab titles to localStorage
   localStorage.setItem("tabTitles", JSON.stringify(tabTitles));
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: renderTitles,
-    args: [tabTitles],
-  });
+  // Update the displayed titles
+  renderTitles(tabTitles);
 });
 
 // Reset Button Functionality
