@@ -7,16 +7,20 @@ function renderTitles(titles) {
   const titleList = document.createElement("ul");
   titleList.classList.add("title-list");
 
-  titles.forEach((title) => {
+  titles.forEach((title, index) => {
+    
     const listItem = document.createElement("li");
-    listItem.textContent = title;
-    listItem.className = "title-item";
+    const spanNum = document.createElement("span");
+    spanNum.innerText = `${index + 1}`; 
+    listItem.appendChild(spanNum);
+    listItem.appendChild(document.createTextNode(title)); 
+    listItem.classList.add("title-item"); 
     titleList.appendChild(listItem);
   });
 
   const showTitleDiv = document.querySelector(".showTitle");
-  showTitleDiv.innerHTML = "";
-  showTitleDiv.appendChild(titleList);
+  showTitleDiv.innerHTML = ""; 
+  showTitleDiv.appendChild(titleList); 
 }
 
 // Load tab titles from localStorage when the extension is opened
@@ -42,9 +46,7 @@ pickbtn.addEventListener("click", async () => {
 
 // Reset Button Functionality
 resetBtn.onclick = function () {
-  // Clear stored tab titles from localStorage
   localStorage.removeItem("tabTitles");
-
-  // Clear displayed titles
   document.querySelector(".showTitle").innerHTML = "";
+  counter = 0;
 };

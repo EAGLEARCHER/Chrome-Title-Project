@@ -1,14 +1,20 @@
-body {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
-  color: #333;
+  showTitle-sizing: border-showTitle;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f6f6;
 }
 
 .popup-container {
   width: 250px;
+  padding-top:  10px;
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -41,9 +47,6 @@ p {
 .pickbtn:hover {
   background-color: #0056b3;
 }
-.showTitle{
-  justify-content: flex-start;
-}
 #reset-button {
   background-color: #ff0000;
   color: #fff;
@@ -58,20 +61,77 @@ p {
 #reset-button:hover {
   background-color: #b30000;
 }
-.title-list{
+.title-list {
   margin: 0;
   padding: 0;
 }
 .title-item {
   padding: 5px 10px;
-  margin: 5px 0;
   background-color: #f2f2f2;
   border-radius: 5px;
-  list-style: none; /* Remove default list styling */
+  list-style: none;
   cursor: pointer;
 }
 
 .title-item:hover {
   background-color: #dcdcdc;
-  /* Add hover styles as needed */
+}
+
+.showTitle {
+  width: 90%;
+  margin-top: 4%;
+  border-bottom: 20px solid #03a9f4;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  justify-content: flex-start;
+}
+.showTitle h2 {
+  color: #fff;
+  background: #03a9f4;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.showTitle ul {
+  position: relative;
+  background: #fff;
+}
+.showTitle ul:hover li {
+  opacity: 0.2;
+}
+.showTitle ul li {
+  list-style: none;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  showTitle-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s;
+}
+.showTitle ul li:hover {
+  transform: scale(1.1);
+  z-index: 5;
+  background: #25bcff;
+  showTitle-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  opacity: 1;
+}
+.showTitle ul li span {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: #25bcff;
+  color: #fff;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  transform: translateY(-2px);
+}
+.showTitle ul li:hover span {
+  background: #fff;
+  color: #25bcff;
 }
