@@ -4,14 +4,19 @@
   "description": "This is the backend for LinkedIN-Chrome Extension project",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bheru Singh Panwar",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
     "mysql2": "^3.9.3",
-    "sequelize": "^6.37.2"
+    "nodemon": "^3.1.0",
+    "sequelize": "^6.37.2",
+    "sqlite3": "^5.1.7"
   }
 }
