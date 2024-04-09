@@ -1,19 +1,20 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const { sequelize } = require("./config/database"); // Import Sequelize instance
+const { sequelize } = require("./config/database");
+const cors = require("cors");
 const linkedinProfileRoutes = require("./routes/profileRoutes");
 
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use("/api/linkedin-profiles", linkedinProfileRoutes);
-
+app.use("/api", linkedinProfileRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
