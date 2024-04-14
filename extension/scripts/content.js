@@ -1,79 +1,46 @@
-// Extract data from the LinkedIn profile page
 function extractData() {
-  const profileData = {};
+  // Extract the user's name
+  const name = document
+    .querySelector(
+      ".text-heading-xlarge.inline.t-24.v-align-middle.break-words"
+    )
+    .textContent.trim();
 
-  // Extract name
-  const nameElement = document.querySelector(".pv-top-card-section__name");
-  if (nameElement) {
-    profileData.name = nameElement.textContent.trim();
-  }
+  // Extract the user's location
+  const location = document
+    .querySelector(".text-body-small.inline.t-black--light.break-words")
+    .textContent.trim();
 
-  // Extract location
-  const locationElement = document.querySelector(
-    ".pv-top-card-section__location"
-  );
-  if (locationElement) {
-    profileData.location = locationElement.textContent.trim();
-  }
+  // Extract the user's bio
+  const bio = document
+    .querySelector(".text-body-medium.break-words")
+    .textContent.trim();
 
-  // Extract about section
-  const aboutElement = document.querySelector(".pv-about__summary-text");
-  if (aboutElement) {
-    profileData.about = aboutElement.textContent.trim();
-  }
+  // Extract the user's connections
+  const connectionsText = document
+    .querySelector(".link-without-visited-state .t-bold")
+    .textContent.trim();
+  const connections = parseInt(connectionsText, 10);
 
-  // Extract bio
-  const bioElement = document.querySelector(
-    ".pv-about__summary-content .lt-line-clamp__line"
-  );
-  if (bioElement) {
-    profileData.bio = bioElement.textContent.trim();
-  }
+  // Extract the user's followers
+  const followersText = document
+    .querySelector(".pvs-header__optional-link strong")
+    .textContent.trim();
+  const followers = parseInt(followersText.replace(/\D/g, ""), 10);
 
-  // Extract follower count
-  const followerCountElement = document.querySelector(
-    ".pv-recent-activity-section__follower-count"
-  );
-  if (followerCountElement) {
-    profileData.followerCount = followerCountElement.textContent.trim();
-  }
-
-  // Extract connection count
-  const connectionCountElement = document.querySelector(
-    ".pv-recent-activity-section__connections-count"
-  );
-  if (connectionCountElement) {
-    profileData.connectionCount = connectionCountElement.textContent.trim();
-  }
-
-  // Extract bio line (if available)
-  const bioLineElement = document.querySelector(
-    ".pv-about__bio-container .pv-about__summary-text"
-  );
-  if (bioLineElement) {
-    profileData.bioLine = bioLineElement.textContent.trim();
-  }
-
-  return profileData;
+  console.log("Name:", name);
+  console.log("Location:", location);
+  console.log("Bio:", bio);
+  console.log("Connections:", connections);
+  console.log("Followers:", followers);
+  const userData = { name, location, bio, connections, followers };
+  return userData;
 }
-
-// Send extracted data to the background script
-function sendDataToBackground(data) {
-  console.log("Hello", 1);
-  localStorage.setItem("data", JSON.stringify(data));
-  chrome.runtime.sendMessage({ action: "sendData", data: data });
-  console.log("Hello", 2);
-}
-
 // Main function to extract data and send it to the background script
 function main() {
-  console.log("Hello", 3);
-
   const profileData = extractData();
-  console.log("Hello, 4");
-
+  console.log(profileData);
   sendDataToBackground(profileData);
-  console.log("Hello, 5");
 }
 
 // Execute the main function when the DOM content is fully loaded
