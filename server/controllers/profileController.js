@@ -12,7 +12,6 @@ const profileController = async (req, res) => {
       connectionCount,
       bioLine,
     } = req.body;
-    console.log(LinkedInProfileModel);
     const newProfile = await LinkedInProfileModel.create({
       name,
       location,
@@ -22,7 +21,6 @@ const profileController = async (req, res) => {
       connectionCount,
       bioLine,
     });
-    console.log(newProfile);
     res.status(StatusCodes.CREATED).json({
       message: "LinkedIn profile data saved successfully",
       profile: newProfile,

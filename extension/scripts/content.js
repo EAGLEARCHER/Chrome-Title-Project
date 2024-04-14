@@ -27,12 +27,6 @@ function extractData() {
     .querySelector(".pvs-header__optional-link strong")
     .textContent.trim();
   const followers = parseInt(followersText.replace(/\D/g, ""), 10);
-
-  console.log("Name:", name);
-  console.log("Location:", location);
-  console.log("Bio:", bio);
-  console.log("Connections:", connections);
-  console.log("Followers:", followers);
   const userData = { name, location, bio, connections, followers };
   return userData;
 }
